@@ -94,8 +94,18 @@ public class LoginUI extends JFrame implements ActionListener {
 		frame.setVisible(true);		
 	}
 
-// to add: @Override
-	//public void actionPerformed(ActionEvent e)
-	// verification of credentials
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		String userName = userNameInput.getText();
+		String passWord = passWordInput.getText();
+		
+		// parse through tt or json file to find credentials: happy path
+		if (passWordInput.equals("pg123")) {
+			//do this later
+		} else { // if credentials are wrong, display error message and quit.
+			JOptionPane.showMessageDialog(null, "Invalid User, Quitting...");
+			System.exit(ABORT);
+		}
 
 }
