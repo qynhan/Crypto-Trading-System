@@ -39,17 +39,17 @@ public class LoginUI extends JFrame implements ActionListener {
 	private JButton loginButton;
 	
 	
-//	private static LoginUI instance;
+	private static LoginUI instance;
 
 	// Should be a reference to a separate object in actual implementation
 
 
-//	public static LoginUI getInstance() {
-//		if (instance == null)
-//			instance = new LoginUI();
-//
-//		return instance;
-//	}
+	public static LoginUI getInstance() {
+		if (instance == null)
+			instance = new LoginUI();
+
+		return instance;
+	}
 
 	public LoginUI() {
 
@@ -84,16 +84,17 @@ public class LoginUI extends JFrame implements ActionListener {
 		submitArea.add(loginButton);
 		
 		getContentPane().add(loginPanel, BorderLayout.NORTH);
-		getContentPane().add(submitArea, BorderLayout.SOUTH);
-		
-		setSize(600, 200);
-		setVisible(true);		
+		getContentPane().add(submitArea, BorderLayout.SOUTH);		
 		
 	}
 
 
 	public static void main(String[] args) {
-		new LoginUI();
+		JFrame frame = LoginUI.getInstance();
+		frame.setSize(800, 300);
+		frame.pack();
+		frame.setVisible(true);		
+	
 	}
 
 	@Override
