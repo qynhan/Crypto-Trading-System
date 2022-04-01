@@ -27,6 +27,8 @@ public class LoginUI extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel loginPanel;
+	private JPanel submitArea;
+
 	
 	private JLabel userNameLbl;
 	private JLabel passWordLbl;
@@ -37,6 +39,8 @@ public class LoginUI extends JFrame implements ActionListener {
 	private JButton loginButton;
 	
 	
+	//// not mine below
+
 	private static LoginUI instance;
 
 	// Should be a reference to a separate object in actual implementation
@@ -54,7 +58,7 @@ public class LoginUI extends JFrame implements ActionListener {
 		// Set window title
 		super("Login Window");
 
-		JPanel loginPanel = new JPanel();
+		loginPanel = new JPanel();
 		loginPanel.setLayout(new GridLayout(3, 2));
 
 		// username input section
@@ -75,16 +79,22 @@ public class LoginUI extends JFrame implements ActionListener {
 		loginPanel.add(userNameInput);
 		loginPanel.add(passWordLbl);
 		loginPanel.add(passWordInput);
-		loginPanel.add(loginButton);
 		
-	    add(loginPanel, BorderLayout.CENTER);
+		submitArea = new JPanel();
+		submitArea.setLayout(new GridLayout(1, 0));
+		
+		submitArea.add(loginButton);
+		
+		getContentPane().add(loginPanel, BorderLayout.NORTH);
+		getContentPane().add(submitArea, BorderLayout.SOUTH);
+		
 	}
 
 
 	public static void main(String[] args) {
 		JFrame frame = LoginUI.getInstance();
 		frame.setSize(600, 200);
-		frame.setVisible(true);
+		frame.setVisible(true);		
 	}
 
 // to add: @Override
