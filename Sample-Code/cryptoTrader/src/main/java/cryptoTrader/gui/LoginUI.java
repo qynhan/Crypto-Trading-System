@@ -103,8 +103,17 @@ public class LoginUI extends JFrame implements ActionListener {
 		String passWord = passWordInput.getText();
 		
 		if (userName.equals("sharon")) {
-			JOptionPane.showMessageDialog(null, "Valid, welcome " + userName);
-			MainUI.getInstance();
+			JOptionPane.showMessageDialog(null, "Welcome " + userName);
+			
+			// taking code from MainUI's initializer
+			JFrame frame = MainUI.getInstance();
+			frame.setSize(900, 600);
+			frame.pack();
+			frame.setVisible(true);
+			
+			// remove loginUI window once taken to MainUI
+			setVisible(false); 
+			dispose(); 
 		} else {
 			JOptionPane.showMessageDialog(null, "Invalid User, Quitting...");
 			System.exit(ABORT);
