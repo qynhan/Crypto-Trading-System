@@ -38,9 +38,6 @@ public class LoginUI extends JFrame implements ActionListener {
 	
 	private JButton loginButton;
 	
-	
-	//// not mine below
-
 	private static LoginUI instance;
 
 	// Should be a reference to a separate object in actual implementation
