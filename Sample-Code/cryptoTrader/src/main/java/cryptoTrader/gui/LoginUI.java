@@ -38,19 +38,20 @@ public class LoginUI extends JFrame implements ActionListener {
 	
 	private JButton loginButton;
 	
-	private static LoginUI instance;
+	
+//	private static LoginUI instance;
 
 	// Should be a reference to a separate object in actual implementation
 
 
-	public static LoginUI getInstance() {
-		if (instance == null)
-			instance = new LoginUI();
+//	public static LoginUI getInstance() {
+//		if (instance == null)
+//			instance = new LoginUI();
+//
+//		return instance;
+//	}
 
-		return instance;
-	}
-
-	private LoginUI() {
+	public LoginUI() {
 
 		// Set window title
 		super("Login Window");
@@ -85,13 +86,14 @@ public class LoginUI extends JFrame implements ActionListener {
 		getContentPane().add(loginPanel, BorderLayout.NORTH);
 		getContentPane().add(submitArea, BorderLayout.SOUTH);
 		
+		setSize(600, 200);
+		setVisible(true);		
+		
 	}
 
 
 	public static void main(String[] args) {
-		JFrame frame = LoginUI.getInstance();
-		frame.setSize(600, 200);
-		frame.setVisible(true);		
+		new LoginUI();
 	}
 
 	@Override
@@ -100,12 +102,14 @@ public class LoginUI extends JFrame implements ActionListener {
 		String userName = userNameInput.getText();
 		String passWord = passWordInput.getText();
 		
-		// parse through tt or json file to find credentials: happy path
-		if (passWordInput.equals("pg123")) {
-			//do this later
-		} else { // if credentials are wrong, display error message and quit.
+		if (userName.equals("sharon")) {
+			JOptionPane.showMessageDialog(null, "valid");
+			MainUI.getInstance();
+		} else {
 			JOptionPane.showMessageDialog(null, "Invalid User, Quitting...");
 			System.exit(ABORT);
 		}
+		
+	}
 
 }
