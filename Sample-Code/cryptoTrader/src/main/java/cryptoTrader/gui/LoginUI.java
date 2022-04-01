@@ -5,6 +5,13 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -103,7 +110,7 @@ public class LoginUI extends JFrame implements ActionListener {
 		String userName = userNameInput.getText();
 		String passWord = passWordInput.getText();
 		
-		if (userName.equals("sharon")) {
+		if (verifyCredentials(userName, passWord)) {
 			JOptionPane.showMessageDialog(null, "Welcome " + userName);
 			
 			// taking code from MainUI's initializer
@@ -121,5 +128,27 @@ public class LoginUI extends JFrame implements ActionListener {
 		}
 		
 	}
-
+	
+	private boolean verifyCredentials(String userName, String passWord) {
+		boolean validUser = false;
+		try {
+			Scanner credentials = new Scanner(new File("credentials.txt"));
+			while (credentials.hasNextLine()) {
+				String user = credentials.nextLine();
+				System.out.println(user);
+				String[] userInfo = user.split(",");
+				
+				if (userName.equals(userInfo[0]) && passWord.equals(userInfo[1])) {
+					validUser = true;
+					System.out.println("valid");
+					break;
+				} 
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return validUser;
+	}
 }
+	
